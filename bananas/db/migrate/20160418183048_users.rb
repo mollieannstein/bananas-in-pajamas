@@ -4,7 +4,7 @@ class Users < ActiveRecord::Migration
       t.string  :username
       t.string  :email
       t.string  :password_digest
-      t.boolean :admin_status
+      t.boolean :admin_status, default: false
 
       t.timestamps null: false
     end
