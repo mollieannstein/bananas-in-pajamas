@@ -42,6 +42,8 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.4)
+    ckeditor_rails (4.5.3)
+      railties (>= 3.0)
     concurrent-ruby (1.0.1)
     debug_inspector (0.0.2)
     erubis (2.7.0)
@@ -139,6 +141,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   byebug
+  ckeditor_rails
   faker (~> 1.6.3)
   jbuilder (~> 2.0)
   jquery-rails
