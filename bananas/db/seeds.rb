@@ -1,3 +1,5 @@
+fruits = ["Banana", "Apple", "Strawberry", "Tangerine", "Pineapple", "Mango", "Peach", "Watermelon"]
+
 User.delete_all
 Article.delete_all
 Tagging.delete_all
@@ -16,7 +18,7 @@ general_users = 10.times.map do
 end
 
 categories =  5.times.map do
-  Category.create!(name: Faker::Team.sport)
+  Category.create!(name: fruits.sample)
 end
 
 non_featured_articles = 20.times do
@@ -27,14 +29,10 @@ featured_articles = 5.times do
   Article.create!(creator_id: general_users.sample.id, featured: true , title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph(25))
 end
 
-taggings = 5.times.map do
-  Tagging.create!(article_id: Article.all.sample.id, category_id: categories.sample.id)
+all_articles = Article.all.each do |article|
+  Tagging.create!(article: article, category: categories.sample)
 end
 
-article = Article.create!(creator_id: 1, featured: true, title: "Bananas", content: Faker::Hipster.paragraph)
-
-
-tagging = Tagging.create!(article_id: 1, category_id: 1)
 
 revision = Revision.create!(article_id: 1, revisor_id: 2, revised_content: "I revised this BOO")
 

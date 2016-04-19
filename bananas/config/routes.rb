@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   get '/signup' => "users#new"
   post '/users/' => "users#create"
 
-  get '/' => "main#index"
+  root "main#index"
 
 end
