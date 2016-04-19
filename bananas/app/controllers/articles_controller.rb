@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_filter :authorize, except: [:index, :show]
 
+
   def index
     @articles = Article.search(params[:terms])
   end
@@ -43,6 +44,13 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+  end
+
+  def destroy
+    redirect_to '/login' unless is_admin?
+    @article.find(params[:id])
+    @article.delete
+    redirect_to '/'
   end
 
 

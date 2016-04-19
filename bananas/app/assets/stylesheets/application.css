@@ -11,9 +11,38 @@
  * file per style scope.
  *
  *= require_self
- *= require bootstrap_and_overrides
+
  *= require_tree .
  */
 
 
+body {
+  background-color: #fbe349;
+}
+
+.header-color {
+  background-color: #6bae1a;
+}
+
+.sidebar-color{
+  background-color: #fed926;
+  height: 2000px;
+}
+.side-bar-float-text {
+  float: left;
+}
+#nav-bar-center {
+  text-align: center;
+  vertical-align: middle;
+  padding-left: 25%;
+}
+
+#float-right-search {
+  padding-top: 1em;
+  float: right;
+}
+
+.title-header {
+  font-size: 3em;
+}
 
