@@ -3,7 +3,7 @@ class Articles < ActiveRecord::Migration
     create_table :articles do |t|
       t.integer :creator_id
       t.string  :title
-      t.boolean :featured
+      t.boolean :featured, default: false
       t.text  :content
 
       t.timestamps null: false

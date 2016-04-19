@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
 #need to clean up routes -- trim routes
-  resources :categories do
-    resources :articles
-  end
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -11,5 +8,11 @@ Rails.application.routes.draw do
 
   get '/signup' => "users#new"
   post '/users/' => "users#create"
+
+  get '/' => "main#index"
+
+  resources :categories do
+    resources :articles
+  end
 
 end
