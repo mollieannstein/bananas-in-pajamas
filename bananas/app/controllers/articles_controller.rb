@@ -30,15 +30,22 @@ class ArticlesController < ApplicationController
 
   def edit
     @category = Category.find(params[:category_id])
-    @article = Article.find(params[:id])
+    @article = @category.articles.find(params[:id])
   end
 
   def update
-    p "_________________________$$$$$$$$$$$$$$$$$$$__________________"
+    p "________________________START HERE___________________________"
     p params
-
-    @article = Article.find(params[:id])
+    @category = Category.find(params[:category_id])
+    @article = @category.articles.find(params[:id])
     @article.update article_params
+    if @article.save
+      @category.articles << @article
+      flash[:notice] = "Article successfully created!!! GO BANANAS!!!"
+      redirect_to "/categories/#{@category.id}"
+    else
+      @errors = @article.errors.full_messages
+    end
   end
 
   def show
@@ -48,6 +55,6 @@ class ArticlesController < ApplicationController
 
 private
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, categories_attributes: [:name, :id])
   end
 end
