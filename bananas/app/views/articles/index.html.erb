@@ -1,0 +1,9 @@
+
+<% if @articles.length == 0 %>
+  No articles matched your search.
+<% else %>
+  <% @articles.each do |article| %>
+      <h2><%= link_to article.title, category_article_path(article.categories.first, article) %></h2>
+      <p><%= truncate(article.content, length: 200) %></p>
+  <% end %>
+<% end %>
