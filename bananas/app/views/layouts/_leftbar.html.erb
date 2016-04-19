@@ -1,3 +1,6 @@
+
+
+
 <h2>Categories</h2>
 
 <ul style="list-style-type:none">
@@ -5,3 +8,5 @@
     <li><%= link_to category.name, category_path(category)%> (<%= category.articles.count %>)</li>
   <% end %>
 </ul>
+
+<%= button_to "New Article", articles_new_path, method: "get" %>
