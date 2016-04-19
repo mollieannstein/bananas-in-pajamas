@@ -1,0 +1,9 @@
+<div class="Category">
+<h4><%=@category.name%></h4>
+
+<ul>
+  <% @category.articles.each do |article| %>
+    <li><a href="/categories/<%=@category.id%>/articles/<%=article.id%>"><%= article.title %></a></li>
+  <% end %>
+</ul>
+</div>
