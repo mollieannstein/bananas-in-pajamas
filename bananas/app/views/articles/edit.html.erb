@@ -12,12 +12,11 @@
   </ul>
 </div>
 <% end %>
-<%= form_for :article, url: '/categories/:article.category.id/articles/:id' do |f| %>
+<%= form_for [@category, @article] do |f| %>
 <div>
   <%= f.label :title %>
 </div>
 <div>
-
   <%= f.text_field(:title)%>
 </div>
 <div>
@@ -35,7 +34,6 @@
 <div>
   <%= f.label :content %>
 </div>
-<input type="hidden" name="revised_content" value = "<%=@article.revisions.last.revised_content%>">
 <div>
   <%= f.cktext_area :content, rows: 10 %>
 </div>
