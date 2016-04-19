@@ -12,10 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 
 //= require ckeditor/init
 
+//= require twitter/bootstrap
+
 //= require bootstrap-sprockets
 //= require twitter/bootstrap
+
 //= require_tree .
+
+
+$(document).ready(function(){
+  // alert("HEY");
+  // console.log("OH MY GOD")
+});
