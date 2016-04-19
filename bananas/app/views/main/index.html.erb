@@ -1,9 +1,8 @@
-<h1>Banana Wiki<h1>
-
-<% @articles.last(5).each do |article| %>
-  <% if article.featured %>
-    <h2><%= link_to article.title, category_article_path(article.categories.first, article) %></h2>
-    <p><%= truncate(article.content, length: 200) %></p>
+<div>
+  <% @articles.last(5).each do |article| %>
+    <% if article.featured %>
+      <h2><%= link_to article.title, category_article_path(article.categories.first, article) %></h2>
+      <p><%= truncate(article.content, length: 200) %></p>
+    <% end %>
   <% end %>
-<% end %>
-
+</div>
