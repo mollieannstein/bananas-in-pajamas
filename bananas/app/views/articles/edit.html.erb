@@ -35,6 +35,7 @@
 <div>
   <%= f.label :content %>
 </div>
+<input type="hidden" name="revised_content" value = "<%=@article.revisions.last.revised_content%>">
 <div>
   <%= f.cktext_area :content, rows: 10 %>
 </div>
