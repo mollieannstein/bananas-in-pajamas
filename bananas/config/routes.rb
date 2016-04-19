@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :categories do
     resources :articles
   end
-
+  # get '/categories/:id/articles' => 'categories#show', as: 'category_articles'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
