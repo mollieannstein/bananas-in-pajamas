@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+
+#need to clean up routes -- trim routes
+  resources :categories do
+    resources :articles
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
   get '/signup' => "users#new"
   post '/users/' => "users#create"
-
 
 
 
@@ -63,4 +68,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+=======
+>>>>>>> ef20c068c6ecbb3138bd8d955bc740f464e848ce
 end

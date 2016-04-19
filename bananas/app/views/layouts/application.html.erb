@@ -7,6 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <ul>
+      <li><a href="/">Home</a></li>
+      <!-- if current_user? -->
+      <!-- add current_user.id for link and name for link -->
+      <li><a href="/users/>">Username</a></li>
+      <li><a href="/sessions">Logout</a></li>
+      <!-- else -->
+      <li><a href="/sessions/new">Login</a></li>
+      <li><a href="/users/new">Register</a></li>
+      <!-- end -->
+  </ul>
+
+
+</nav>
 
 <%= yield %>
 
