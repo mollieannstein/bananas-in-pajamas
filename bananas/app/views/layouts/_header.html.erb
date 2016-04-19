@@ -15,4 +15,14 @@
       <%= link_to "Register", signup_path %>
       <!-- end --><% end %>
   </ul>
+
+  <!-- The search bar  -->
+
+  <%= form_tag articles_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :terms, params[:terms] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+
 </nav>

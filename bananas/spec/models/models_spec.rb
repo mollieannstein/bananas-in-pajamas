@@ -35,7 +35,7 @@ end
 
 describe Article do
   let(:user) {User.create(username: "Jack", email: "boop@bop.com", password: "1234")}
-  let(:article) {Article.create}
+  let(:article) {Article.create(title: "Test", content: "Potato Yarn Batman")}
 
   it "has many revisions" do
     article.revisions << Revision.create()
@@ -46,6 +46,12 @@ describe Article do
   it "can reference its revisors" do
     user.revisions << Revision.create(article: article)
     expect(article.revisors.first).to eq(user)
+  end
+
+  it "can search for articles that contain a word in title or content" do
+    Article.create(title: "Test2", content: "Batman is cool")
+    Article.create(title: "Test2", content: "fuck yeah Batman is cool")
+    expect(Article.search("Batman").length).to eq(2)
   end
 
 end
