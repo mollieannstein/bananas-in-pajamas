@@ -1,0 +1,8 @@
+<h1>Banana Wiki<h1>
+
+<% @articles.last(5).each do |article| %>
+  <% if article.featured %>
+    <h2><%= article.title %></h2>
+    <p><%= truncate(article.content, length: 200) %></p>
+  <% end %>
+<% end %>

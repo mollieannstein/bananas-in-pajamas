@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :load_categories_for_sidebar
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -13,4 +14,7 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  def load_categories_for_sidebar
+    @categories = Category.all
+  end
 end
