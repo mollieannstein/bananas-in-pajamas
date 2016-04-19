@@ -1,12 +1,15 @@
 
 
-
+  <div class="container">
 <h2>Categories</h2>
 
-<ul style="list-style-type:none">
+<ul style="list-style-type:none" class="nav nav-stacked">
   <% categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category)%> (<%= category.articles.count %>)</li>
+    <li class="sidebar-brand"><%= link_to category.name, category_path(category)%> (<%= category.articles.count %>)</li>
   <% end %>
 </ul>
 
 <%= button_to "New Article", articles_new_path, method: "get" %>
+
+</div>
+
