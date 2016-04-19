@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
 #need to clean up routes -- trim routes
 
+get '/articles/new' => 'articles#new'
+
   resources :categories do
     resources :articles
   end
