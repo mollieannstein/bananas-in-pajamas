@@ -1,0 +1,19 @@
+
+
+<form>
+            <textarea name="editor1" class="ckeditor" rows="10" cols="80">
+            	Test
+            </textarea>
+            // <script>
+            //     // Replace the <textarea id="editor1"> with a CKEditor
+            //     // instance, using default configuration.
+            //     CKEDITOR.replace( 'editor1' , {
+
+            //     	uiColor: '#9AB8F3'
+            //     });
+            // </script>
+            <input type="submit" placeholder="Submit"></input>
+</form>
+
+
+you can also do form_for the thing you want and then < %= f.text_area :content, :class => 'ckeditor' % > , then CKEDITOR.replace('ckeditor') in javascript.

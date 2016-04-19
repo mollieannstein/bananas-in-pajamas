@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 #need to clean up routes -- trim routes
   resources :categories do
     resources :articles
