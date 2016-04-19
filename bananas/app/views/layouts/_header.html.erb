@@ -1,28 +1,32 @@
-<nav>
-  <ul>
-      <li><a href="/">Home</a></li>
-      <!-- if current_user? -->
-      <!-- add current_user.id for link and name for link -->
-      <% if logged_in? %>
-      <!-- <li><a href="/users/>">Username</a></li> -->
-      <%= link_to current_user.username %>
-      <!-- <li><a href="/sessions">Logout</a></li> -->
-      <%=link_to "Logout", logout_path %>
-      <!-- else --><% else %>
-      <!-- <li><a href="/sessions/new">Login</a></li> -->
-      <%= link_to "Login", login_path %>
-      <!-- <li><a href="/users/new">Register</a></li> -->
-      <%= link_to "Register", signup_path %>
-      <!-- end --><% end %>
-  </ul>
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Bananas</a>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+          <li><%= link_to "Home", "/"  %></li>
+            <% if logged_in? %>
+              <li><%= link_to current_user.username  %></li>
+              <li><%= link_to "Logout", logout_path  %></li>
+            <% else %>
+              <li><%= link_to "Login", login_path %></li>
+              <li><%= link_to "Register", signup_path %></li>
+            <% end %>
+      </ul>
+    </div>
+      <%= form_tag articles_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :terms, params[:terms] %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+  <% end %>
+  </div>
+</div>
 
   <!-- The search bar  -->
 
-  <%= form_tag articles_path, :method => 'get' do %>
-    <p>
-      <%= text_field_tag :terms, params[:terms] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-  <% end %>
 
-</nav>
