@@ -18,11 +18,12 @@
               <% end %>
         </ul>
         <span class="navbar-brand title-header" id="nav-bar-center">🍌Bana-Wiki🍌</span>
+
           <div id="float-right-search">
             <%= form_tag articles_path, :method => 'get' do %>
                 <p>
-                <%= text_field_tag :terms, params[:terms] %>
-                <%= submit_tag "Search", :name => nil %>
+                <%= text_field_tag :terms, params[:terms]  %>
+                <%= submit_tag "Search", :name => nil, class: "btn btn-success"%>
               </p>
             <% end %>
           </div>

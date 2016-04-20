@@ -3,13 +3,14 @@
 <div id="sidebar-partial">
     <h2>Categories</h2>
 
-
+<hr>
+<center>
       <% categories.each do |category| %>
         <div class="sidebar-brand"><%= link_to category.name, category_path(category)%> (<%= category.articles.count %>)</div>
       <% end %>
-
-
-    <%= button_to "New Article", articles_new_path, method: "get" %>
+      <hr>
+    <%= button_to "New Article", articles_new_path, method: "get", class: "btn btn-success" %>
+</center>
 
 
 </div>
