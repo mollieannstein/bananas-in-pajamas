@@ -20,16 +20,11 @@
   <%= f.text_field :title %>
 </div>
 <div>
-  <%=f.fields_for :categories do |category|%>
-  <%= category.label :category %><br>
-  <%=category.text_field :name, list: 'name'%>
-  <datalist id='name'>
-    <% Category.all.each do |category| %>
-    <option value="<%=category.name%>"></option>
-    <%end%>
-  </datalist>
+  <%=f.fields_for @article.categories do |category|%>
+    <%= category.label :category %><br>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <%end%>
 </div>
-<%end%>
 
 <div>
   <%= f.label :content %>

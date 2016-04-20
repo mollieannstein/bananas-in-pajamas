@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
        @category = Category.find_or_create_by(name: params[:article][:category][:name])
        @article = Article.new(article_params)
        if @article.save
+        Tagging.create(article_id: @article.id, category_id: @category.id)
           @article.creator_id = session[:user_id]
           @category.articles << @article
         redirect_to "/categories/#{@category.id}", notice: "The article has been successfully created."
@@ -30,22 +31,38 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    p params
     @category = Category.find(params[:category_id])
-    @article = @category.articles.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def update
-    p "________________________START HERE___________________________"
-    p params
+    p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     @category = Category.find(params[:category_id])
-    @article = @category.articles.find(params[:id])
-    @article.update article_params
-    if @article.save
-      @category.articles << @article
+    p params
+    @article = Article.find(params[:id])
+    category_ids = params[:article][:category_ids]
+    category_ids.pop
+    categories = []
+    category_ids.each do |id|
+      new_cat = Category.find_by(params[:category])
+      categories << new_cat
+    end
+    taggings = []
+    categories.each do |category|
+      taggings << category.taggings.find_or_create_by(category_id: category.id, article_id: @article.id)
+    end
+    taggings.each do |tagging|
+      @article.taggings.clear
+      @article.taggings << tagging
+    end
+      @article.update(article_params)
+      if @article.save
       flash[:notice] = "Article successfully created!!! GO BANANAS!!!"
-      redirect_to "/categories/#{@category.id}"
+      redirect_to "/categories/#{@category.id}/articles/#{@article.id}"
     else
       @errors = @article.errors.full_messages
+      render action: 'edit'
     end
   end
 
@@ -63,6 +80,6 @@ class ArticlesController < ApplicationController
 
 private
   def article_params
-    params.require(:article).permit(:title, :content, categories_attributes: [:name, :id])
+    params.require(:article).permit(:title, :content, categories_attributes: [:id, :name])
   end
 end
