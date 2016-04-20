@@ -1,0 +1,12 @@
+<% @users.each do |user| %>
+  <p><%= user.username %> <br>
+  <span>Admin Status: <%= user.admin_status %></span></p>
+
+  <% if user.admin_status == false %>
+    <% if is_admin? %>
+      <%= button_to "Make Admin", user_path(user), method: "patch", params: {admin_status: true } %>
+      <%= button_to "Delete", user_path(user), method: "delete" %>
+    <% end %>
+  <% end %>
+
+<% end %>
