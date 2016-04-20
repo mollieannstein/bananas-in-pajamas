@@ -1,13 +1,15 @@
-<h2><%= @article.title %></h2>
-<p>
-<%= button_to "Back", category_path(@article.categories.first), method: "get" %>
-<% if logged_in? %>
-  <%= button_to "Edit", edit_category_article_path(@article.categories.first, @article), method: "get" %>
-<% end %>
-</p>
+<h2 class="push-right"><%= @article.title %></h2><hr class="style-seven">
+<div class="push-right">
 <% if @article.revisions.length > 0 %>
   <p><%= @article.revisions.last.revised_content %></p>
 <%else%>
     <p><%=sanitize @article.content%></p>
 <%end%>
+
+<p>
+<%= button_to "Back", category_path(@article.categories.first), method: "get" %>
+<% if logged_in? %>
 <%= button_to "Edit Article", edit_category_article_path(@article.categories.first, @article), method: "get" %>
+<% end %>
+</p>
+</div>
