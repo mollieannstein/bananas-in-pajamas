@@ -13,14 +13,16 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    if params[:article][:category][:name] != nil
-       @category = Category.find_or_create_by(name: params[:article][:category][:name])
+    if params[:article][:category_ids][0] != nil
+      @category_ids = params[:article][:category_ids]
        @article = Article.new(article_params)
        if @article.save
-        Tagging.create(article_id: @article.id, category_id: @category.id)
+         @category_ids.each do |id|
+            Tagging.create(article_id: @article.id, category_id: id)
+          end
           @article.creator_id = session[:user_id]
-          @article.categorie << @article
-        redirect_to "/categories/#{@category.id}", notice: "The article has been successfully created."
+          @category_id = @category_ids[0]
+        redirect_to "/categories/#{@category_id}", notice: "The article has been successfully created."
       else
         @errors = @article.errors.full_messages
         render action: "new"
@@ -32,15 +34,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    p params
     @category = Category.find(params[:category_id])
     @article = Article.find(params[:id])
   end
 
   def update
-    p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     @category = Category.find(params[:category_id])
-    p params
     @article = Article.find(params[:id])
     category_ids = params[:article][:category_ids]
     category_ids.pop

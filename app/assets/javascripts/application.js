@@ -17,6 +17,8 @@
 
 
 $(document).ready(function(){
+  $("#cke_article_content").toggleShow();
+
   // alert("HEY");
   // console.log("OH MY GOD")
 });
