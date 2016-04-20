@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authorize, except: [:index, :show]
+  before_filter :logged_in?, only: [:edit, :update, :destroy]
 
 
   def index
@@ -64,5 +65,9 @@ class ArticlesController < ApplicationController
 private
   def article_params
     params.require(:article).permit(:title, :content, categories_attributes: [:name, :id])
+  end
+
+  def logged_in?
+    session[:user_id]
   end
 end
