@@ -1,5 +1,10 @@
 <h2><%= @article.title %></h2>
-<%= link_to "Back to Category's Articles", category_path(@article.categories.first) %>
+<p>
+<%= button_to "Back", category_path(@article.categories.first), method: "get" %>
+<% if logged_in? %>
+  <%= button_to "Edit", edit_category_article_path(@article.categories.first, @article), method: "get" %>
+<% end %>
+</p>
 <% if @article.revisions.length > 0 %>
   <p><%= @article.revisions.last.revised_content %></p>
 <%else%>

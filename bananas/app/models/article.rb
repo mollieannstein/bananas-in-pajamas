@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
   has_many :taggings
   has_many :categories, through: :taggings, source: :category
+  accepts_nested_attributes_for :categories
 
   def self.search(terms)
     if terms

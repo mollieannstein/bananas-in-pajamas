@@ -17,10 +17,10 @@
   <%= f.label :title %>
 </div>
 <div>
-  <%= f.text_field(:title)%>
+  <%= f.text_field :title %>
 </div>
 <div>
-  <%=f.fields_for :category do |category|%>
+  <%=f.fields_for :categories do |category|%>
   <%= category.label :category %><br>
   <%=category.text_field :name, list: 'name'%>
   <datalist id='name'>
