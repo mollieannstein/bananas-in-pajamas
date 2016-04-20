@@ -10,3 +10,4 @@
 <%else%>
     <p><%=sanitize @article.content%></p>
 <%end%>
+<%= button_to "Edit Article", edit_category_article_path(@article.categories.first, @article), method: "get" %>
