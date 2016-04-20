@@ -30,10 +30,10 @@ body {
   background-color: #6bae1a;
 }
 
-.sidebar-color, .header-color {
+/*.sidebar-color, .header-color {
   border: 2px solid #8B4513;
   border-radius: 35px;
-}
+}*/
 
 .sidebar-color{
   background-color: #fed926;
@@ -53,6 +53,7 @@ body {
 #float-right-search {
   padding-top: 1em;
   float: right;
+  width: 20%;
 }
 
 .title-header {
@@ -93,6 +94,10 @@ hr.style-seven:before { /* Not really supposed to work, but does */
 
 .push-right {
   margin-left: 20px;
+}
+
+hr {
+  border-color: black;
 }
 
 

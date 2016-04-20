@@ -7,9 +7,18 @@
 <%end%>
 
 <p>
-<%= button_to "Back", category_path(@article.categories.first), method: "get" %>
+  <div class="col-sm-2  center-block ">
+    <div class="col-sm-6">
+<%= button_to "Back", category_path(@article.categories.first), method: "get", class: "btn btn-success" %>
+
+    </div>
+    <div class="col-sm-6">
 <% if logged_in? %>
-<%= button_to "Edit Article", edit_category_article_path(@article.categories.first, @article), method: "get" %>
+<%= button_to "Edit Article", edit_category_article_path(@article.categories.first, @article), method: "get", class: "btn btn-success" %>
 <% end %>
+
+    </div>
+
+  </div>
 </p>
 </div>
