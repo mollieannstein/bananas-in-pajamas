@@ -6,7 +6,7 @@ before_filter :authorize, :is_admin?
   end
 
   def is_admin?
-    if current_user.admin_status?
+    if is_admin?
       true
     else
       render :text => 'Who are you to doing this? :)'
