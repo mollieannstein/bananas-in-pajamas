@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
        if @article.save
         Tagging.create(article_id: @article.id, category_id: @category.id)
           @article.creator_id = session[:user_id]
-          @category.articles << @article
+          @article.categorie << @article
         redirect_to "/categories/#{@category.id}", notice: "The article has been successfully created."
       else
         @errors = @article.errors.full_messages
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
     category_ids.pop
     categories = []
     category_ids.each do |id|
-      new_cat = Category.find_by(params[:category])
+      new_cat = Category.find_or_create_by(params[:name])
       categories << new_cat
     end
     taggings = []
@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
       taggings << category.taggings.find_or_create_by(category_id: category.id, article_id: @article.id)
     end
     taggings.each do |tagging|
-      @article.taggings.clear
+      # @article.taggings.clear
       @article.taggings << tagging
     end
       @article.update(article_params)
