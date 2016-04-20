@@ -5,16 +5,22 @@
             <li><%= link_to "Home", "/"  %></li>
               <% if logged_in? %>
                 <li><%= link_to current_user.username  %></li>
+                  <% if is_admin? %>
+                    <li><%= link_to "Admin", users_path %></li>
+                  <% end %>
                 <li><%= link_to "Logout", logout_path  %></li>
               <% else %>
                 <li><%= link_to "Login", login_path %></li>
                 <li><%= link_to "Register", signup_path %></li>
               <% end %>
+              <% if session[:user_id] %>
+
+              <% end %>
         </ul>
-        <span class="navbar-brand title-header" id="nav-bar-center">🍌Banawiki🍌</span>
-          <div id="float-right-search"
+        <span class="navbar-brand title-header" id="nav-bar-center">🍌Bana-Wiki🍌</span>
+          <div id="float-right-search">
             <%= form_tag articles_path, :method => 'get' do %>
-              <p>
+                <p>
                 <%= text_field_tag :terms, params[:terms] %>
                 <%= submit_tag "Search", :name => nil %>
               </p>

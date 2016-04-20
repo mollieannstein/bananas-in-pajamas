@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get '/admin/:id' => 'admin#show', as: "admin"
 
 
 #need to clean up routes -- trim routes
   resources :articles, only: [:index]
+  resources :users, only: [:index, :update, :destroy]
 
-get '/articles/new' => 'articles#new'
+  get '/articles/new' => 'articles#new'
 
   resources :categories do
     resources :articles
@@ -19,5 +21,6 @@ get '/articles/new' => 'articles#new'
   post '/users/' => "users#create"
 
   root "main#index"
+
 
 end
