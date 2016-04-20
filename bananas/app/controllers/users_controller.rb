@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
 
   def new
   end
@@ -18,10 +21,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(admin_status: params[:admin_status])
+    redirect_to '/users'
+  end
+
   def destroy
     user = User.find(params[:id])
     user.delete
-    redirect_to '/'
+    redirect_to '/users'
   end
 
 private

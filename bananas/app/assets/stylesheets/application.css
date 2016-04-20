@@ -15,9 +15,14 @@
  *= require_tree .
  */
 
+html {
+  min-height: 400px;
+  min-width: 600px;
+}
+
 
 body {
-  background-color: #fbe349;
+  background-color: #fff2ad;
 }
 
 .header-color {
@@ -45,4 +50,18 @@ body {
 .title-header {
   font-size: 3em;
 }
+
+a {
+  color: #352e04;
+}
+
+a:hover {
+  color: green;
+}
+
+li a:hover {
+  background-color: #fed926;
+}
+
+
 

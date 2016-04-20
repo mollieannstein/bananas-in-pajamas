@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 #need to clean up routes -- trim routes
   resources :articles, only: [:index]
+  resources :users, only: [:index, :update, :destroy]
 
 get '/articles/new' => 'articles#new'
 
